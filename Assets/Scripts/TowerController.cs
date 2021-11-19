@@ -14,7 +14,7 @@ public class TowerController : MonoBehaviour
     private float jumpForce;
     private Coroutine jumpForceCoroutine;
     private bool isGrounded;
-    Sequence jumpSequence;
+    private Sequence jumpSequence;
 
     private void Awake()
     {
@@ -22,6 +22,7 @@ public class TowerController : MonoBehaviour
         blocks.Add(GetComponentInChildren<TowerBlock>().gameObject);
         isGrounded = true;
     }
+
     private void Start()
     {
         jumpSequence = DOTween.Sequence();
@@ -128,12 +129,6 @@ public class TowerController : MonoBehaviour
         {
             blocks[blockId].transform.localPosition += Vector3.up;
             UpdateBlocksHeight(blockId + 1);
-
-            //jumpSequence.Append(
-            //    blocks[blockId].transform
-            //    .DOLocalJump(new Vector3(0, blocks[blockId].transform.position.y + 1), 0, 1, .1f, false)
-            //    .OnComplete(() => UpdateBlocksHeight(blockId + 1))
-            //    .SetAutoKill());
         }
         else
         {

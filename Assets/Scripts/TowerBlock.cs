@@ -2,10 +2,17 @@
 
 public class TowerBlock : MonoBehaviour
 {
-    [SerializeField] Material neutralMat;
+    [SerializeField] private Material neutralMat;
+
+    private MeshRenderer meshRenderer;
+
+    private void Start()
+    {
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
 
     public void SetNeutral()
     {
-        GetComponent<MeshRenderer>().material = neutralMat;
+        meshRenderer.material = neutralMat;
     }
 }
